@@ -1,20 +1,18 @@
-declare var $: any;
+export abstract class View<T> {
 
-abstract class View<T> {
+        protected _elemento: JQuery;
 
-    protected _elemento: any;
+        constructor(seletor: string) {
 
-    constructor(seletor: string) {
+            this._elemento = $(seletor);
+        }
 
-        this._elemento = $(seletor);
+        update(model: T) {
+
+            this._elemento.html(this.template(model));
+        }
+
+        abstract template(model: T): string;
+
     }
-
-    update(model: T) {
-
-        this._elemento.html = this.template(model);
-    }
-
-    abstract template(model: T): string;
-
-}
 
